@@ -4,5 +4,15 @@
     "email": "Email",
     "password": "Пароль",
     "enter": "Кіру"
+  },
+  "header": {
+    "settings": "Параметрлер",
+    "logout": "Шығу"
+  },
+  "doctors": {
+    "title": "Докторлар"
+  },
+  "patients": {
+    "title": "Пациенттер"
   }
 }

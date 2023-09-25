@@ -4,5 +4,15 @@
     "email": "Email",
     "password": "Пароль",
     "enter": "Enter"
+  },
+  "header": {
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "doctors": {
+    "title": "Doctors"
+  },
+  "patients": {
+    "title": "Patients"
   }
 }

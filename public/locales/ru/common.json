@@ -4,5 +4,15 @@
     "email": "Email",
     "password": "Пароль",
     "enter": "Вход"
+  },
+  "header": {
+    "settings": "Настройки",
+    "logout": "Выйти"
+  },
+  "doctors": {
+    "title": "Доктора"
+  },
+  "patients": {
+    "title": "Пациенты"
   }
 }

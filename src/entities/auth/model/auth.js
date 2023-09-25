@@ -19,10 +19,11 @@ const useAuthStore = create((set, get) => ({
     const { form } = get()
     const credential = await signIn(form)
     if (!credential) {
-      return
+      return null
     }
     document.cookie = `access_token=${credential.user.accessToken || ''}; path=/`
     localStorage.setItem('access_token', credential.user.accessToken)
+    return credential
   }
 }))
 

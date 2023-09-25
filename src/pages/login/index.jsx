@@ -1,15 +1,20 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import { useAuthStore } from '@/entities/auth'
 
 const Login = () => {
   const { t } = useTranslation()
+  const router = useRouter()
   const { form, onChange, login } = useAuthStore()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    login()
+    const credential = await login()
+    if (credential) {
+      router.push('/doctors')
+    }
   }
   return (
     <>
