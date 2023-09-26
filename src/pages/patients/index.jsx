@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from 'react'
 import { useTranslation } from 'next-i18next'
@@ -8,9 +7,8 @@ import { Header } from '@/widgets/header'
 import { withAuth } from '@/entities/auth'
 import { useDoctorsStore } from '@/entities/doctors'
 
-const Doctors = () => {
+const Patients = () => {
   const { t } = useTranslation()
-  const router = useRouter()
   const { list, getDoctors } = useDoctorsStore()
 
   useEffect(() => {
@@ -19,13 +17,13 @@ const Doctors = () => {
   return (
     <>
       <Head>
-        <title>{t('doctors.title')}</title>
+        <title>{t('patients.title')}</title>
       </Head>
       <Header />
       <div className="py-10">
         <header>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900">{t('doctors.title')}</h1>
+            <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900">{t('patients.title')}</h1>
           </div>
         </header>
         <main>
@@ -40,7 +38,6 @@ const Doctors = () => {
                 <button
                   type="button"
                   className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  onClick={() => router.push('/doctors/create')}
                 >
                   {t('doctors.add')}
                 </button>
@@ -104,4 +101,4 @@ export const getServerSideProps = withAuth(async (context) => {
   }
 })
 
-export default Doctors
+export default Patients

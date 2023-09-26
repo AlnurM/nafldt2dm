@@ -10,7 +10,19 @@
     "logout": "Logout"
   },
   "doctors": {
-    "title": "Doctors"
+    "title": "Doctors",
+    "subtitle": "A list of all the users in your account including their name, phone, email and role.",
+    "name": "Full name",
+    "phone": "Phone number",
+    "email": "Email",
+    "about": "About",
+    "role": "Role",
+    "add": "Add",
+    "edit": "Edit",
+    "details": "Doctor information",
+    "create": "Create",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "patients": {
     "title": "Patients"

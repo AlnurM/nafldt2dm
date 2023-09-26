@@ -1,4 +1,4 @@
-import { withAuth } from "@/entities/auth"
+import { withAuth } from '@/entities/auth'
 
 const Home = () => {
   return (
@@ -9,7 +9,10 @@ const Home = () => {
 
 export const getServerSideProps = withAuth(async (context) => {
   return {
-    props: {}
+    redirect: {
+      destination: '/login',
+      status: 302
+    }
   }
 })
 
