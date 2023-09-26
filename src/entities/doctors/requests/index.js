@@ -1,5 +1,5 @@
 import { collection, query, where, doc, getDocs, getDoc, setDoc, updateDoc } from 'firebase/firestore'
-import { createUserWithEmailAndPassword, updatePassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, db } from '@/shared/firebase'
 
 export const getAllDoctors = async () => {

@@ -24,7 +24,7 @@ const withAuth = gssp => {
           }
         }
       }
-      return await gssp(context)
+      return await gssp({...context, user_id})
     } catch (e) {
       console.log(e.message)
       return {

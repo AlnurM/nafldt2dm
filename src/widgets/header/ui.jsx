@@ -87,7 +87,7 @@ const Header = () => {
                           <Menu.Item>
                             {({ active }) => (
                               <a
-                                href="/settings"
+                                href="/profile"
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
                                   'block px-4 py-2 text-sm text-gray-700'
@@ -154,7 +154,7 @@ const Header = () => {
                   <div className="space-y-1">
                     <Disclosure.Button
                       as="a"
-                      href="/settings"
+                      href="/profile"
                       className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                     >
                       {t('header.settings')}
