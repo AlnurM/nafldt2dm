@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next'
 import { Header } from '@/widgets/header'
 import { withAuth, getUser, useAuthStore } from '@/entities/auth'
 
-const Profile = ({ data }) => {
+const Profile = ({ data, role }) => {
   const { t } = useTranslation()
   const router = useRouter()
   const { profile, setProfile, onChangeProfile: onChange, onEdit } = useAuthStore()
@@ -14,7 +14,7 @@ const Profile = ({ data }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await onEdit()
-    router.push('/doctors')
+    router.push(role === 'admin' ? '/doctors' : '/patients')
   }
   
   useEffect(() => {
@@ -23,17 +23,17 @@ const Profile = ({ data }) => {
   return (
     <>
       <Head>
-        <title>{t('doctors.title')}</title>
+        <title>{t('profile.title')}</title>
       </Head>
       <Header />
       <div className="mx-auto max-w-7xl py-10 px-4 sm:px-0">
         <form onSubmit={handleSubmit}>
           <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">{t('doctors.details')}</h2>
+            <h2 className="text-base font-semibold leading-7 text-gray-900">{t('profile.title')}</h2>
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
                 <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
-                  {t('doctors.name')}
+                  {t('profile.name')}
                 </label>
                 <div className="mt-2">
                   <input
@@ -67,7 +67,7 @@ const Profile = ({ data }) => {
               </div>
               <div className="sm:col-span-3">
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                  {t('doctors.phone')}
+                  {t('profile.phone')}
                 </label>
                 <div className="mt-2">
                   <input
@@ -84,7 +84,7 @@ const Profile = ({ data }) => {
               </div>
               <div className="sm:col-span-3">
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                  {t('doctors.email')}
+                  {t('profile.email')}
                 </label>
                 <div className="mt-2">
                   <input
@@ -101,7 +101,7 @@ const Profile = ({ data }) => {
               </div>
               <div className="col-span-full">
                 <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
-                  {t('doctors.about')}
+                  {t('profile.about')}
                 </label>
                 <div className="mt-2">
                   <textarea
@@ -119,13 +119,13 @@ const Profile = ({ data }) => {
           </div>
           <div className="mt-6 flex items-center justify-end gap-x-6">
             <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
-              {t('doctors.cancel')}
+              {t('profile.cancel')}
             </button>
             <button
               type="submit"
               className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              {t('doctors.save')}
+              {t('profile.save')}
             </button>
           </div>
         </form>
@@ -135,12 +135,13 @@ const Profile = ({ data }) => {
 }
 
 export const getServerSideProps = withAuth(async (context) => {
-  const { locale, user_id } = context
+  const { locale, user_id, role } = context
   const data = await getUser(user_id)
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
-      data
+      data,
+      role
     },
   }
 })

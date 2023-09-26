@@ -4,7 +4,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import { useAuthStore } from '@/entities/auth'
 
-const Login = () => {
+const Login = ({ role }) => {
   const { t } = useTranslation()
   const router = useRouter()
   const { form, onChange, login } = useAuthStore()
@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault()
     const credential = await login()
     if (credential) {
-      router.push('/doctors')
+      router.push(role === 'admin' ? '/doctors' : '/patients')
     }
   }
   return (
@@ -81,10 +81,11 @@ const Login = () => {
 }
 
 export async function getStaticProps(context) {
-  const { locale } = context
+  const { locale, role } = context
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
+      role
     },
   }
 }

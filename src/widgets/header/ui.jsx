@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 import { useTranslation } from 'next-i18next'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { getCookie, removeCookie } from '@/shared/helpers'
 import { LocaleSelect } from '../locale'
 
 const user = {
@@ -18,15 +19,16 @@ function classNames(...classes) {
 const Header = () => {
   const { t } = useTranslation()
   const router = useRouter()
-  
+  const role = getCookie('role')
+
   const navigation = [
-    { name: t('doctors.title'), href: '/doctors' },
-    { name: t('patients.title'), href: '/patients' },
-  ]
+    role === 'admin' && { name: t('doctors.title'), href: '/doctors' },
+    role === 'doctor' && { name: t('patients.title'), href: '/patients' },
+  ].filter(Boolean)
   
   const handleLogout = () => {
-    document.cookie = 'access_token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/'
-    document.cookie = 'role=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/'
+    removeCookie('access_token')
+    removeCookie('role')
     router.push('/login')
   }
   return (

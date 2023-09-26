@@ -13,7 +13,7 @@ const withAuth = gssp => {
         const user = await getUser(user_id)
         res.setHeader(
           'Set-Cookie',
-          `role=${encodeURIComponent(user.role)}; Max-Age=3600; Path=/; HttpOnly`
+          `role=${encodeURIComponent(user.role)}; Max-Age=3600; Path=/;`
         );
       }
       if (!user_id) {
@@ -24,7 +24,7 @@ const withAuth = gssp => {
           }
         }
       }
-      return await gssp({...context, user_id})
+      return await gssp({...context, user_id, role})
     } catch (e) {
       console.log(e.message)
       return {

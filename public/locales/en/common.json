@@ -9,6 +9,15 @@
     "settings": "Settings",
     "logout": "Logout"
   },
+  "profile": {
+    "title": "Profile",
+    "name": "Full name",
+    "phone": "Phone number",
+    "email": "Email",
+    "about": "About",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
   "doctors": {
     "title": "Doctors",
     "subtitle": "A list of all the users in your account including their name, phone, email and role.",
