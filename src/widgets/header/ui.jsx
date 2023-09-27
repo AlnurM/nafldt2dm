@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { Fragment } from 'react'
 import { useTranslation } from 'next-i18next'
+import { useMemo } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { getCookie, removeCookie } from '@/shared/helpers'
@@ -21,10 +23,12 @@ const Header = () => {
   const router = useRouter()
   const role = getCookie('role')
 
-  const navigation = [
-    role === 'admin' && { name: t('doctors.title'), href: '/doctors' },
-    role === 'doctor' && { name: t('patients.title'), href: '/patients' },
-  ].filter(Boolean)
+  const navigation = useMemo(() => {
+    return [
+      role === 'admin' && { name: t('doctors.title'), href: '/doctors' },
+      role === 'doctor' && { name: t('patients.title'), href: '/patients' },
+    ].filter(Boolean)
+  }, [role])
   
   const handleLogout = () => {
     removeCookie('access_token')
@@ -49,19 +53,19 @@ const Header = () => {
                     </div>
                     <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                       {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            router.asPath.includes(item.href)
-                              ? 'border-indigo-500 text-gray-900'
-                              : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                            'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
-                          )}
-                          aria-current={router.asPath.includes(item.href) ? 'page' : undefined}
-                        >
-                          {item.name}
-                        </a>
+                        <Link key={item.name} href={item.href}>
+                          <span
+                            className={classNames(
+                              router.asPath.includes(item.href)
+                                ? 'border-indigo-500 text-gray-900'
+                                : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                              'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
+                            )}
+                            aria-current={router.asPath.includes(item.href) ? 'page' : undefined}
+                          >
+                            {item.name}
+                          </span>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -88,15 +92,16 @@ const Header = () => {
                         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                           <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="/profile"
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
-                                )}
-                              >
-                                {t('header.settings')}
-                              </a>
+                              <Link href="/profile">
+                                <span
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'block px-4 py-2 text-sm text-gray-700'
+                                  )}
+                                >
+                                  {t('header.settings')}
+                                </span>
+                              </Link>
                             )}
                           </Menu.Item>
                           <Menu.Item>

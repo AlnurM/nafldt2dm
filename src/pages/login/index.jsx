@@ -3,11 +3,13 @@ import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import { useAuthStore } from '@/entities/auth'
+import { getCookie } from '@/shared/helpers'
 
-const Login = ({ role }) => {
+const Login = () => {
   const { t } = useTranslation()
   const router = useRouter()
   const { form, onChange, login } = useAuthStore()
+  const role = getCookie('role')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -80,12 +82,11 @@ const Login = ({ role }) => {
   )
 }
 
-export async function getStaticProps(context) {
-  const { locale, role } = context
+export async function getServerSideProps(context) {
+  const { locale } = context
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-      role
+      ...(await serverSideTranslations(locale, ['common']))
     },
   }
 }
