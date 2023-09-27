@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from 'react'
 import { useTranslation } from 'next-i18next'
-import { withAuth } from '@/entities/auth'
+import { withAdmin } from '@/entities/auth'
 import { useDoctorsStore, getDoctorDetails } from '@/entities/doctors'
 
 const DoctorDetails = ({ data }) => {
@@ -134,7 +134,7 @@ const DoctorDetails = ({ data }) => {
   )
 }
 
-export const getServerSideProps = withAuth(async (context) => {
+export const getServerSideProps = withAdmin(async (context) => {
   try {
     const { locale, query } = context
     const data = await getDoctorDetails(query.id)
