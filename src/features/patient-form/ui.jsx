@@ -10,12 +10,12 @@ const config = {
   risk: (props) => <RiskForm {...props} />,
   clinical: (props) => <ClinicalForm {...props} />,
 }
-const PatientForm = () => {
+const PatientForm = ({ data }) => {
   const { t } = useTranslation()
   const { query } = useRouter()
   return (
     <>
-      {config[query.step]()}
+      {config[query.step]({ data })}
     </>
   )
 }

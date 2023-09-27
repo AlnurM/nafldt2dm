@@ -26,7 +26,7 @@ const Header = () => {
   const navigation = useMemo(() => {
     return [
       role === 'admin' && { name: t('doctors.title'), href: '/doctors' },
-      role === 'doctor' && { name: t('patients.title'), href: '/patients' },
+      { name: t('patients.title'), href: '/patients' },
     ].filter(Boolean)
   }, [role])
   

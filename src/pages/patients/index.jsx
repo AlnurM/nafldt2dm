@@ -5,15 +5,15 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from 'react'
 import { useTranslation } from 'next-i18next'
 import { withAuth } from '@/entities/auth'
-import { useDoctorsStore } from '@/entities/doctors'
+import { usePatientsStore } from '@/entities/patients'
 
 const Patients = () => {
   const { t } = useTranslation()
   const router = useRouter()
-  const { list, getDoctors } = useDoctorsStore()
+  const { list, getPatients } = usePatientsStore()
 
   useEffect(() => {
-    getDoctors()
+    getPatients()
   }, [])
   return (
     <>
@@ -54,10 +54,10 @@ const Patients = () => {
                           {t('patients.name')}
                         </th>
                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                          {t('patients.phone')}
+                          {t('patients.id')}
                         </th>
                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                          {t('patients.email')}
+                          {t('patients.phone')}
                         </th>
                         <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                           <span className="sr-only">{t('patients.edit')}</span>
@@ -65,15 +65,15 @@ const Patients = () => {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                      {list.map((person) => (
-                        <tr key={person.email}>
+                      {list?.map((person) => (
+                        <tr key={person.id}>
                           <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                            {person.name}
+                            {person.fullname}
                           </td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.id}</td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.phone}</td>
-                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.email}</td>
                           <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                            <Link href={`/patients/${person.id}`}>
+                            <Link href={`/patients/${person.id}?step=passport`}>
                               <span className="text-indigo-600 hover:text-indigo-900">
                                 {t('patients.edit')}<span className="sr-only">, {person.name}</span>
                               </span>
