@@ -34,6 +34,16 @@
     "cancel": "Cancel"
   },
   "patients": {
-    "title": "Patients"
+    "title": "Patients",
+    "name": "Full name",
+    "phone": "Phone number",
+    "email": "Email",
+    "about": "About",
+    "add": "Add",
+    "edit": "Edit",
+    "details": "Patient information",
+    "create": "Create",
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }

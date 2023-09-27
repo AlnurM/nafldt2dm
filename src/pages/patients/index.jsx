@@ -29,7 +29,7 @@ const Patients = () => {
             <div className="sm:flex sm:items-center">
               <div className="sm:flex-auto">
                 <p className="mt-2 text-sm text-gray-700">
-                  {t('doctors.subtitle')}
+                  {t('patients.subtitle')}
                 </p>
               </div>
               <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -37,7 +37,7 @@ const Patients = () => {
                   type="button"
                   className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  {t('doctors.add')}
+                  {t('patients.add')}
                 </button>
               </div>
             </div>
@@ -48,16 +48,16 @@ const Patients = () => {
                     <thead>
                       <tr>
                         <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
-                          {t('doctors.name')}
+                          {t('patients.name')}
                         </th>
                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                          {t('doctors.phone')}
+                          {t('patients.phone')}
                         </th>
                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                          {t('doctors.email')}
+                          {t('patients.email')}
                         </th>
                         <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                          <span className="sr-only">{t('doctors.edit')}</span>
+                          <span className="sr-only">{t('patients.edit')}</span>
                         </th>
                       </tr>
                     </thead>
@@ -70,9 +70,9 @@ const Patients = () => {
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.phone}</td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.email}</td>
                           <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                            <Link href={`/doctors/${person.id}`}>
+                            <Link href={`/patients/${person.id}`}>
                               <span className="text-indigo-600 hover:text-indigo-900">
-                                {t('doctors.edit')}<span className="sr-only">, {person.name}</span>
+                                {t('patients.edit')}<span className="sr-only">, {person.name}</span>
                               </span>
                             </Link>
                           </td>

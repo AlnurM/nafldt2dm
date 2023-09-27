@@ -35,6 +35,10 @@ const Header = () => {
     removeCookie('role')
     router.push('/login')
   }
+
+  if (!role) {
+    return null
+  }
   return (
     <>
       <div className="min-h-full">
