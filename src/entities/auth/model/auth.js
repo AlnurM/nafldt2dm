@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { signIn, editUser } from '../requests'
+import { signIn, editUser, getUser } from '../requests'
 
 const useAuthStore = create((set, get) => ({
   form: {
@@ -34,9 +34,12 @@ const useAuthStore = create((set, get) => ({
     if (!credential) {
       return null
     }
+    const user = await getUser(credential.user.uid)
+    console.log(user.role)
     document.cookie = `access_token=${credential.user.accessToken || ''}; path=/`
+    document.cookie = `role=${user.role || ''}; path=/`
     localStorage.setItem('access_token', credential.user.accessToken)
-    return credential
+    return { ...credential, role: user.role }
   },
   onEdit: async () => {
     try {

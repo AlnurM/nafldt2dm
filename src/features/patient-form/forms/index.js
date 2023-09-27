@@ -1,0 +1,6 @@
+export { default as PassportForm } from './PassportForm'
+export { default as HereditaryForm } from './HereditaryForm'
+export { default as MedicalForm } from './MedicalForm'
+export { default as DiagnosisForm } from './DiagnosisForm'
+export { default as RiskForm } from './RiskForm'
+export { default as ClinicalForm } from './ClinicalForm'

@@ -3,19 +3,17 @@ import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import { useAuthStore } from '@/entities/auth'
-import { getCookie } from '@/shared/helpers'
 
 const Login = () => {
   const { t } = useTranslation()
   const router = useRouter()
   const { form, onChange, login } = useAuthStore()
-  const role = getCookie('role')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const credential = await login()
     if (credential) {
-      router.push(role === 'admin' ? '/doctors' : '/patients')
+      router.push(credential.role === 'admin' ? '/doctors' : '/patients')
     }
   }
   return (

@@ -7,7 +7,7 @@ import { useDoctorsStore } from '@/entities/doctors'
 
 const DoctorCreate = () => {
   const { t } = useTranslation()
-  const router = useRouter(useTranslation)
+  const router = useRouter()
   const { form, onChange, onSubmit } = useDoctorsStore()
 
   const handleSubmit = async (e) => {

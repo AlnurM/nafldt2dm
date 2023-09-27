@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from 'react'
 import { useTranslation } from 'next-i18next'
@@ -8,6 +9,7 @@ import { useDoctorsStore } from '@/entities/doctors'
 
 const Patients = () => {
   const { t } = useTranslation()
+  const router = useRouter()
   const { list, getDoctors } = useDoctorsStore()
 
   useEffect(() => {
@@ -36,6 +38,7 @@ const Patients = () => {
                 <button
                   type="button"
                   className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  onClick={() => router.push('/patients/create?step=passport')}
                 >
                   {t('patients.add')}
                 </button>

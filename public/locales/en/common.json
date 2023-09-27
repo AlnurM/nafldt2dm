@@ -44,6 +44,175 @@
     "details": "Patient information",
     "create": "Create",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "steps": {
+      "passport": {
+        "title": "Passport part",
+        "fullname": "Patient's full name",
+        "id": "Individual ID number",
+        "birthdate": "Date of Birth",
+        "gender": {
+          "title": "Gender",
+          "male": "Male",
+          "female": "Female"
+        },
+        "address": "Home address",
+        "phone": "Contact phone number",
+        "occupation": {
+          "title": "Type of occupation",
+          "worker": "worker",
+          "employee": "employee",
+          "learner": "learner",
+          "student": "student",
+          "pensioner": "pensioner"
+        }
+      },
+      "hereditary": {
+        "title": "Hereditary factors",
+        "yes": "Yes",
+        "no": "No",
+        "diabetes": "Do any family members have diabetes mellitus type 2?",
+        "hypertension": "Is there anyone in the family who has been diagnosed with arterial hypertension ?",
+        "obese": "Is there anyone in your family who is obese?",
+        "dyslipidaemia": "Did your close relatives have dyslipidaemia?",
+        "thyroid": "Do any of your close relatives suffer from thyroid disease?",
+        "polycystic": "Has anyone in the family been diagnosed with polycystic ovaries?",
+        "psoriasis": "Does anyone in the family suffer from psioriasis?"
+      },
+      "medical": {
+        "title": "Medical history",
+        "1to5": "1-5 years",
+        "6to10": "6-10 years",
+        "11to15": "11-15 years",
+        "16to20": "16-20 years",
+        "over20": "over 20 years",
+        "18to44": "18-44 years old",
+        "45to59": "45-59 years old",
+        "60to74": "60-74 years old",
+        "75to90": "75-90 years old",
+        "ageNafld": "Age of diagnosis of NAFLD",
+        "yearsNafld": "How many years of suffering from NAFLD?",
+        "ageDiabetes": "Age at diagnosis of diabetes mellitus type 2",
+        "yearsDiabetes": "How many years of suffering from diabetes mellitus type 2?"
+      },
+      "diagnosis": {
+        "title": "Diagnosis by ICD 10 code",
+        "yes": "Yes",
+        "no": "No",
+        "E11": "Е11 Insulin-independent diabetes mellitus",
+        "E11.2": "Е11.2 with kidney affected",
+        "E11.3": "Е11.3 with eye affected",
+        "E11.4": "Е11.4 with neurological complications",
+        "E11.5": "Е11.5 with peripheral circulation damage",
+        "E11.6": "Е11.6 with other specified complications",
+        "E11.7": "Е11.7 with multiple complications",
+        "E11.8": "Е11.8 with unspecified complications",
+        "K76": "K76.0 Fatty liver (liver degeneration), not elsewhere classified",
+        "I10": "I10 Essential [primary] hypertension",
+        "I11": "I11 Hypertensive heart disease [hypertensive heart disease with predominant cardiac involvement]",
+        "I12": "I12 Hypertensive [hypertensive] disease with predominant kidney damage",
+        "I13": "I13 Hypertensive disease with predominant heart and kidney damage",
+        "I15": "I15 Secondary hypertension",
+        "E66": "E66.0 Obesity due to excessive energy intake",
+        "E66.8": "E66.8 Other forms of obesity",
+        "E03.8": "Е03.8 Other specified hypothyroidisms",
+        "E28.2": "Е28.2 Polycystic ovary syndrome",
+        "E78": "Е78.0 Pure hypercholesterolaemia",
+        "E78.1": "Е78.1 Pure hyperglyceridaemia"
+      },
+      "risk": {
+        "title": "Risk factors",
+        "yes": "Yes",
+        "no": "No",
+
+        "to1000": "< 1000 gr.",
+        "1000to1499": "1000-1499 gr.",
+        "1500to2499": "1500-2499 gr.",
+        "over2500": " > 2500 gr.",
+
+        "16to18": "16-18.5 (weight deficit)",
+        "18to25": "18.5-24.9 (normal)",
+        "25to30": "25-29.9 (pre obesity)",
+        "30to35": "30-34.9 (1st degree obesity)",
+        "35to40": "35-39.9 (2nd degree obesity)",
+        "over40": "40 or more (3rd degree obesity)",
+
+        "low": "low activity",
+        "medium": "moderate activity",
+        "high": "high activity",
+
+        "normal": "normal blood pressure 120/80 mmHg.",
+        "prehyper": "Pre-hypertension: 120-139/80-89 mmHg.",
+        "ag1": "1st degree AH: 140-159/90-99 mmHg.",
+        "ag2": "2nd degree AH:160-179/100-109 mmHg.",
+        "ag3": "3rd degree AH: 180/110 mmHg and above.",
+
+        "early": "early (40-45 years)",
+        "late": "late (after 45 years of age)",
+
+        "weight": "Body weight at birth",
+        "bmi": "BMI, kg/m2",
+        "activity": "Your daily physical activity",
+        "insomnia": "Insomnia",
+        "smoking": "Smoking",
+        "hypertension": "Arterial hypertension",
+        "hypothyroidism": "hypothyroidism",
+        "polycistic": "polycystic ovary syndrome",
+        "apnoea": "obstructive sleep apnoea syndrome",
+        "hypogonadism": "hypogonadism",
+        "hypopituitarism": "hypopituitarism",
+        "menopause": "menopause (only for women)"
+      },
+      "clinical": {
+        "title": "Clinical and laboratory data",
+
+        "comp": "compensation (up to 6-6.9)",
+        "subcomp": "subcompensation (7.0-7.5)",
+        "decomp": "decompensation (more than 7.5)",
+
+        "exist": "none insulin resistance (up to 2.7)",
+        "absent": "presence of insulin resistance (more than 2.7)",
+
+        "to17": "<1,7 mmol/l",
+        "over17": "> 1,7 mmol/l",
+
+        "to10": "<1,0 mmol/l ",
+        "over10": "> 1,0 mmol/l",
+
+        "minimal": "minimal activity ALT, AST < ULN",
+        "mild": "mild activity 1-5 ULN (ALT, AST)",
+        "moderate": "moderate activity ULN (ALT, AST)",
+        "severe": "severe activity >10 ULN (ALT, AST)",
+
+        "easy": "mild degree",
+        "medium": "medium degree",
+        "hard": "severe degree ",
+
+        "low": "<1.45 low probability of fibrosis",
+        "grey": "1.45-3.25 «Grey zone»",
+        "high": ">3.25 high probability of significant fibrosis",
+
+        "f0": "F0 (<5,7)",
+        "f1": "F1 (5,8-7,2)",
+        "f2": "F2 (7,3-9,5)",
+        "f3": "F3 (9,6-11,5)",
+        "f4": "F4 (>11,5)",
+
+        "min": "minimal (<238)",
+        "mil": "mild (238-259)",
+        "mod": "moderate (260-291)",
+        "sev": "severe (>292)",
+
+        "haemoglobin": "glycated haemoglobin (HbA1c), % ",
+        "homa": "HOMA IR",
+        "triglycerides": "Triglycerides",
+        "hdl": "HDL",
+        "cytolysis": "cytolysis",
+        "cholestasis": "cholestasis",
+        "fib4": "fib4",
+        "fibrosis": "Fibroscan indirect elastography to assess the stage of liver fibrosis",
+        "steatosis": "Fibroscan indirect elastography to assess the degree of hepatic steatosis, CAP"
+      }
+    }
   }
 }
