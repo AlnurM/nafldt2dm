@@ -3,6 +3,7 @@ const { i18n } = require('./next-i18next.config')
 
 const nextConfig = {
   i18n,
+  localePath: path.resolve('./public/locales'),
   reactStrictMode: false,
   swcMinify: false,
   env: {
