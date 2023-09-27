@@ -6,9 +6,12 @@ import { db, auth } from '@/shared/firebase'
 export const getAllPatients = async () => {
   try {
     const access_token = getCookie('access_token')
+    const role = getCookie('role')
     const decoded = jwtDecode(access_token)
     const list = []
-    const q = query(collection(db, 'patient'), where('doctorId', '==', decoded.user_id))
+    const q = role === 'admin' 
+      ? query(collection(db, 'patient'))
+      : query(collection(db, 'patient'), where('doctorId', '==', decoded.user_id))
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
       list.push({
