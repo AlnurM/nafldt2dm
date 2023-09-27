@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from 'react'
 import { useTranslation } from 'next-i18next'
-import { Header } from '@/widgets/header'
 import { withAuth } from '@/entities/auth'
 import { useDoctorsStore } from '@/entities/doctors'
 
@@ -21,7 +20,6 @@ const Doctors = () => {
       <Head>
         <title>{t('doctors.title')}</title>
       </Head>
-      <Header />
       <div className="py-10">
         <header>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

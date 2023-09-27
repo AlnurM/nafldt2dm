@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from 'react'
 import { useTranslation } from 'next-i18next'
-import { Header } from '@/widgets/header'
 import { withAuth } from '@/entities/auth'
 import { useDoctorsStore, getDoctorDetails } from '@/entities/doctors'
 
@@ -26,7 +25,6 @@ const DoctorDetails = ({ data }) => {
       <Head>
         <title>{t('doctors.title')} | {t('doctors.create')}</title>
       </Head>
-      <Header />
       <div className="mx-auto max-w-7xl py-10 px-4 sm:px-0">
         <form onSubmit={handleSubmit}>
           <div className="border-b border-gray-900/10 pb-12">
