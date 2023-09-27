@@ -3,13 +3,15 @@ import { getCookie } from '@/shared/helpers'
 import jwtDecode from 'jwt-decode'
 import { db, auth } from '@/shared/firebase'
 
-export const getAllPatients = async () => {
+export const getAllPatients = async (doctorId) => {
   try {
     const access_token = getCookie('access_token')
     const role = getCookie('role')
     const decoded = jwtDecode(access_token)
     const list = []
-    const q = role === 'admin' 
+    const q = !!doctorId ?
+      query(collection(db, 'patient'), where('doctorId', '==', doctorId))
+      : role === 'admin' 
       ? query(collection(db, 'patient'))
       : query(collection(db, 'patient'), where('doctorId', '==', decoded.user_id))
     const querySnapshot = await getDocs(q)
