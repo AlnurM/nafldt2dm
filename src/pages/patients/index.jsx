@@ -4,13 +4,60 @@ import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from 'react'
 import { useTranslation } from 'next-i18next'
+import * as XLSX from 'xlsx'
 import { withAuth } from '@/entities/auth'
-import { usePatientsStore } from '@/entities/patients'
+import { usePatientsStore, configKeys, configValues } from '@/entities/patients'
 
 const Patients = () => {
   const { t } = useTranslation()
   const router = useRouter()
   const { list, getPatients } = usePatientsStore()
+
+  const translateKeys = (obj) => {
+    const translatedObj = {};
+    Object.keys(configKeys).forEach((key) => {
+      if (obj[key] !== undefined) {
+        const translatedKey = configKeys[key]
+        if (key === 'cholestasis') {
+          translatedObj[translatedKey] = configValues[obj[key] + '_cholestasis'] || obj[key]
+          return
+        }
+        if (key === 'fib4') {
+          translatedObj[translatedKey] = configValues[obj[key] + '_fib4'] || obj[key]
+          return
+        }
+        translatedObj[translatedKey] = configValues[obj[key]] || obj[key]
+      }
+    });
+    return translatedObj;
+  }
+
+  const handleDownload = () => {
+    const json = list.map(item => translateKeys(item))
+    const ws = XLSX.utils.json_to_sheet(json)
+    const wb = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1')
+    const range = XLSX.utils.decode_range(ws['!ref'])
+    for (let i = range.s.c; i <= range.e.c; i++) {
+      ws[XLSX.utils.encode_col(i) + '1'] = { t: 's', v: ws[XLSX.utils.encode_col(i) + '1'].v }
+      ws[XLSX.utils.encode_col(i) + '1'].s = { font: { bold: true } }
+      ws[XLSX.utils.encode_col(i) + '1'].z = '0' 
+      let max_width = ws[XLSX.utils.encode_col(i) + '1'].v.length
+      for (let j = range.s.r + 1; j <= range.e.r; j++) {
+        const cell = ws[XLSX.utils.encode_col(i) + (j + 1)]
+        if (cell && cell.v) {
+          const cell_width = cell.v.toString().length
+          if (cell_width > max_width) {
+            max_width = cell_width
+          }
+        }
+      }
+      ws['!cols'] = ws['!cols'] || []
+      ws['!cols'][i] = { wch: max_width + 2 }
+    }
+    XLSX.writeFile(wb, 'Report.xls')
+  };
+  
 
   useEffect(() => {
     getPatients()
@@ -34,13 +81,20 @@ const Patients = () => {
                   {t('patients.subtitle')}
                 </p>
               </div>
-              <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+              <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none sm:flex">
                 <button
                   type="button"
                   className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   onClick={() => router.push('/patients/create?step=passport')}
                 >
                   {t('patients.add')}
+                </button>
+                <button
+                  type="button"
+                  className="ml-3 block rounded-md bg-green-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+                  onClick={handleDownload}
+                >
+                  {t('patients.download')}
                 </button>
               </div>
             </div>
