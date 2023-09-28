@@ -73,6 +73,9 @@ const Header = () => {
                       ))}
                     </div>
                   </div>
+                  <div className="hidden sm:flex h-full justify-center items-center text-sm font-bold">
+                    {t('header.title')}
+                  </div>
                   <div className="hidden sm:ml-6 sm:flex sm:items-center">
                     <div className="hidden sm:flex sm:items-center">
                       <LocaleSelect />
