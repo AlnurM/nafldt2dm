@@ -19,14 +19,14 @@ const Patients = () => {
       if (obj[key] !== undefined) {
         const translatedKey = configKeys[key]
         if (key === 'cholestasis') {
-          translatedObj[translatedKey] = configValues[obj[key] + '_cholestasis'] || obj[key]
+          translatedObj[t(translatedKey)] = t(configValues[obj[key] + '_cholestasis']) || obj[key]
           return
         }
         if (key === 'fib4') {
-          translatedObj[translatedKey] = configValues[obj[key] + '_fib4'] || obj[key]
+          translatedObj[t(translatedKey)] = t(configValues[obj[key] + '_fib4']) || obj[key]
           return
         }
-        translatedObj[translatedKey] = configValues[obj[key]] || obj[key]
+        translatedObj[t(translatedKey)] = t(configValues[obj[key]]) || obj[key]
       }
     });
     return translatedObj;
