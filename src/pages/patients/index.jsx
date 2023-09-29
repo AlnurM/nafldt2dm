@@ -72,7 +72,7 @@ const Patients = () => {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-lg sm:text-3xl font-bold text-indigo-600">
             {t('header.title')}
           </div>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mt-5 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900">{t('patients.title')}</h1>
           </div>
         </header>
