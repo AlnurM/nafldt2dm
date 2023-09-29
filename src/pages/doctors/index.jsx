@@ -22,7 +22,10 @@ const Doctors = () => {
       </Head>
       <div className="py-10">
         <header>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-lg sm:text-3xl font-bold text-indigo-600">
+            {t('header.title')}
+          </div>
+          <div className="mt-5 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900">{t('doctors.title')}</h1>
           </div>
         </header>

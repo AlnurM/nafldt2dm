@@ -69,6 +69,9 @@ const Patients = () => {
       </Head>
       <div className="py-10">
         <header>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-lg sm:text-3xl font-bold text-indigo-600">
+            {t('header.title')}
+          </div>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900">{t('patients.title')}</h1>
           </div>
@@ -81,7 +84,7 @@ const Patients = () => {
                   {t('patients.subtitle')}
                 </p>
               </div>
-              <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none sm:flex">
+              <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none flex">
                 <button
                   type="button"
                   className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

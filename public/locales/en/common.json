@@ -218,5 +218,8 @@
         "steatosis": "Fibroscan indirect elastography to assess the degree of hepatic steatosis, CAP"
       }
     }
+  },
+  "statistics": {
+    "title": "Statistics"
   }
 }
